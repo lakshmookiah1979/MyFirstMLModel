@@ -35,24 +35,6 @@ as `test_data.csv` in this repository.
 
 🔗 [https://github.com/lakshmookiah1979/MyFirstMLModel](https://github.com/lakshmookiah1979/MyFirstMLModel)
 
-The repository contains all required project files:
-```
-MyFirstMLModel/
-│-- streamlit_app.py       # Streamlit web app for predictions
-│-- train_models.py        # Script to train, evaluate, and save all models
-│-- requirements.txt       # Python dependencies
-│-- README.md              # Project documentation (this file)
-│-- test_data.csv          # Dataset used for training/testing
-│-- model/                 # Saved trained models for all implemented algorithms
-    │-- logistic_regression.pkl
-    │-- decision_tree.pkl
-    │-- knn.pkl
-    │-- naive_bayes.pkl
-    │-- random_forest.pkl
-    │-- gradient_boosting.pkl
-    │-- scaler.pkl
-    │-- model_comparison.csv
-```
 
 ## d. Models Used
 
@@ -103,16 +85,3 @@ train/test split for a fair comparison.
   combined with Logistic Regression's high AUC/MCC make them the two
   strongest candidates for deployment. The Streamlit app allows switching
   between all six models to compare predictions interactively.
-
-## How to Run Locally
-
-```bash
-# 1. Install dependencies
-pip install -r requirements.txt
-
-# 2. Train all models (creates test_data.csv and populates model/)
-python train_models.py
-
-# 3. Launch the Streamlit app
-streamlit run streamlit_app.py
-```
