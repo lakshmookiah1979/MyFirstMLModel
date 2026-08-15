@@ -1,14 +1,14 @@
 """
 streamlit_app.py
 -----------------
-Streamlit UI for the Breast Cancer classification project.
+Streamlit UI for the Breast Cancer classification Project.
 
 Features:
     a. Dataset upload option (CSV)
     b. Model selection dropdown (6 trained models)
-    c. Display of evaluation metrics
-    d. Confusion matrix / classification report
-    Bonus: results table comparing all 6 models on the uploaded test data
+    c. Display of Evaluation Metrics
+    d. Confusion matrix / classification Report
+    Additionally, Results table comparing all 6 models on the uploaded test data
 
 Run with:
     streamlit run streamlit_app.py
@@ -46,7 +46,7 @@ st.write(
 
 MODEL_DIR = "model"
 
-# Map of display name -> saved filename
+# Map of Display the Model Name -> saved filename
 MODEL_FILES = {
     "Logistic Regression": "logistic_regression.pkl",
     "Decision Tree Classifier": "decision_tree.pkl",
@@ -57,7 +57,7 @@ MODEL_FILES = {
 }
 
 # ------------------------------------------------------------------
-# Load scaler + available models
+# Load Scaler + Available models
 # ------------------------------------------------------------------
 @st.cache_resource
 def load_scaler():
@@ -92,7 +92,7 @@ if scaler is None or not available_models:
     st.stop()
 
 # ------------------------------------------------------------------
-# a. Dataset upload option (CSV)
+# a. Dataset Upload Option in UI (CSV)
 # ------------------------------------------------------------------
 st.header("1. Upload Test Data")
 uploaded_file = st.file_uploader(
@@ -127,7 +127,7 @@ except Exception as e:
     st.stop()
 
 # ------------------------------------------------------------------
-# Helper: evaluate one model on the uploaded data
+# Helper: Evaluate one model on the uploaded data
 # ------------------------------------------------------------------
 def evaluate_model(model, X_scaled, y_true):
     y_pred = model.predict(X_scaled)
@@ -148,7 +148,7 @@ def evaluate_model(model, X_scaled, y_true):
 
 
 # ------------------------------------------------------------------
-# b. Model selection dropdown
+# b. Model Selection Dropdown in UI Screen
 # ------------------------------------------------------------------
 st.header("2. Select a Model")
 selected_model_name = st.selectbox(
@@ -159,7 +159,7 @@ model = load_model(available_models[selected_model_name])
 y_pred, metrics = evaluate_model(model, X_scaled, y_uploaded)
 
 # ------------------------------------------------------------------
-# c. Display of evaluation metrics
+# c. Display of Evaluation Metrics
 # ------------------------------------------------------------------
 st.header("3. Evaluation Metrics")
 cols = st.columns(len(metrics))
@@ -167,7 +167,7 @@ for col, (metric_name, value) in zip(cols, metrics.items()):
     col.metric(metric_name, f"{value:.4f}")
 
 # ------------------------------------------------------------------
-# d. Confusion matrix / classification report
+# d. Confusion Matrix / Classification Report
 # ------------------------------------------------------------------
 st.header("4. Confusion Matrix & Classification Report")
 
